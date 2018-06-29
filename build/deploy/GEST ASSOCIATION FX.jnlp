@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="GEST ASSOCIATION FX.jnlp">
+  <information>
+    <title>GEST ASSOCIATION FX</title>
+    <vendor>Seka Cannel Ulrich Evrard</vendor>
+    <description>GestionAssociation</description>
+  </information>
+  <resources>
+    <jar href="libs\com.gluonhq.eclipse.plugin_2.6.0.v20180424-0818.jar" size="3245576" download="eager" />
+    <jar href="libs\commons-net-3.3-ftp.jar" size="135277" download="eager" />
+    <jar href="libs\commons-net-3.3-sources.jar" size="414196" download="eager" />
+    <jar href="libs\mysql-connector-java-5.1.28-bin.jar" size="875339" download="eager" />
+  </resources>
+  <update check="background"/>
+</jnlp>

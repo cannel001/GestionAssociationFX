@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="331.0" style="-fx-background-color: transparent; -fx-background-radius: 100%; -fx-border-radius: 100%;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ProgressIndicator prefHeight="325.0" prefWidth="331.0" />
+      <Label layoutX="87.0" layoutY="149.0" text="Veuillez patienter" textFill="#0b8ac9">
+         <font>
+            <Font name="Comic Sans MS" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

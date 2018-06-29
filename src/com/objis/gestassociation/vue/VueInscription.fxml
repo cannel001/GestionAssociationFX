@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="921.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="656.0" fitWidth="932.0" layoutX="-5.0" layoutY="-4.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../../../../../../../MES%20PROJETS/14-3-4.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="6.0" layoutY="10.0" opacity="0.78" prefHeight="629.0" prefWidth="910.0" style="-fx-background-color: black; -fx-background-radius: 5%;">
+         <children>
+            <Label layoutX="24.0" layoutY="30.0" prefHeight="17.0" prefWidth="196.0" text="Creer un nouveau compte" textFill="#fffdfd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="23.0" layoutY="52.0" prefHeight="6.0" prefWidth="861.0" />
+            <Button layoutX="377.0" layoutY="558.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="157.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-radius: 5%; -fx-border-width: 2px;" text="S'incrire" textFill="#d4cbda">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <GridPane layoutX="128.0" layoutY="100.0" prefHeight="401.0" prefWidth="354.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="104.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="250.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Nom" textFill="#d4cbda" />
+                  <Label text="Prenom(s)" textFill="#d4cbda" GridPane.rowIndex="1" />
+                  <TextField fx:id="txfNom" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" />
+                  <Label text="Date de naissance" textFill="#d4cbda" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="txfDateNaissance" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txfPrenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Date d'entrée" textFill="#d4cbda" GridPane.rowIndex="3" />
+                  <Label text="Lieu de naissance" textFill="#d4cbda" GridPane.rowIndex="4" />
+                  <Label text="Sexe" textFill="#d4cbda" GridPane.rowIndex="5" />
+                  <Label text="Nationalité" textFill="#d4cbda" GridPane.rowIndex="6" />
+                  <Label text="Telephone" textFill="#d4cbda" GridPane.rowIndex="7" />
+                  <Label text="Email" textFill="#d4cbda" GridPane.rowIndex="8" />
+                  <Label text="Profession" textFill="#d4cbda" GridPane.rowIndex="9" />
+                  <Label text="Adresse" textFill="#d4cbda" GridPane.rowIndex="10" />
+                  <DatePicker fx:id="txfDateEntree" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txfLieuNaissance" prefHeight="25.0" prefWidth="294.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txfNationalite" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txfTelephone" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="txfEmail" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="txfProfession" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <TextField fx:id="txfAdresse" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Label text="Matricule" textFill="#d4cbda" GridPane.rowIndex="11" />
+                  <AnchorPane prefHeight="29.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                     <children>
+                        <TextField fx:id="txfMatricule" layoutY="1.0" prefHeight="25.0" prefWidth="139.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btnGenerationMatri" layoutX="150.0" layoutY="1.0" mnemonicParsing="false" onAction="#clickerSurBtnGenerer" prefHeight="25.0" prefWidth="72.0" text="Generer" />
+                     </children>
+                  </AnchorPane>
+                  <ToolBar prefHeight="29.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <items>
+                        <RadioButton fx:id="selectHom" mnemonicParsing="false" onAction="#radioButonHomme" text="Homme" />
+                        <RadioButton fx:id="selectFem" mnemonicParsing="false" onAction="#radioButonFemme" text="Femme" />
+                     </items>
+                  </ToolBar>
+                  <Label text="Type Adherent" textFill="#d4cbda" GridPane.rowIndex="12" />
+                  <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="224.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                     <items>
+                        <RadioButton fx:id="selectInterne" mnemonicParsing="false" onAction="#clickerSurRadioInterne" text="INTERNE" />
+                        <RadioButton fx:id="selectExterne" mnemonicParsing="false" onAction="#clickerSurRadioExterne" text="EXTERNE">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </RadioButton>
+                     </items>
+                  </ToolBar>
+               </children>
+            </GridPane>
+            <GridPane layoutX="517.0" layoutY="100.0" prefHeight="96.0" prefWidth="265.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="79.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="186.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Fonction" textFill="#d4cbda" />
+                  <Label text="Pseudo" textFill="#d4cbda" GridPane.rowIndex="1" />
+                  <Label text="Mot de pass" textFill="#d4cbda" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbxFonction" prefHeight="25.0" prefWidth="352.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="txfPseudo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txfPasword" accessibleRole="PASSWORD_FIELD" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="470.0" maxWidth="773.0" minHeight="470.0" minWidth="773.0" prefHeight="470.0" prefWidth="773.0" styleClass="backgroundImageAnime" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.objis.gestassociation.vue.VueConnexionControlleur">
+   <children>
+      <Pane opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="438.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="321.0" style="-fx-background-radius: 15%; -fx-background-color: white;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="16.0">
+         <effect>
+            <DropShadow height="25.45" radius="25.9375" width="80.3" />
+         </effect>
+         <children>
+            <TextField fx:id="txfUsername" alignment="CENTER" layoutX="40.0" layoutY="203.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="241.0" promptText="Username">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="txfPassword" alignment="CENTER" layoutX="40.0" layoutY="253.0" prefHeight="30.0" prefWidth="241.0" promptText="Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="btnConnexion" layoutX="70.0" layoutY="348.0" mnemonicParsing="false" onAction="#clickerSurBtnConnecter" prefHeight="30.0" prefWidth="180.0" styleClass="btnSeConnecter" stylesheets="@application.css" text="Se connecter" />
+            <ImageView fitHeight="92.0" fitWidth="94.0" layoutX="113.0" layoutY="65.0" pickOnBounds="true" smooth="false" styleClass="logoAssociation" />
+            <Label fx:id="lbinfoConnection" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="287.0" prefHeight="17.0" prefWidth="295.0" text="Label" textAlignment="CENTER" textFill="#e80606" />
+            <Button fx:id="btnChangerMotDePasse" layoutX="71.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickerSurBtnChangerPass" prefHeight="30.0" prefWidth="180.0" styleClass="btnChangerPass" stylesheets="@application.css" text="Changer mot de pass" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

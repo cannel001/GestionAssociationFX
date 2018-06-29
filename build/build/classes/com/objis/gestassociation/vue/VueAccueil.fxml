@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="563.0" prefWidth="600.0" styleClass="backgroundImage" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane opacity="0.95" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView cache="true" cacheHint="SPEED" fitHeight="400.0" fitWidth="600.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Myspace.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Mon association" textAlignment="CENTER" textFill="#6a6464">
+               <StackPane.margin>
+                  <Insets top="500.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="Comic Sans MS" size="32.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" color="#947777" />
+               </effect>
+            </Label>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

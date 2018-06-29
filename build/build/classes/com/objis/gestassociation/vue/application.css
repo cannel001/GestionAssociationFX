@@ -1,0 +1,132 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.slideBar{
+	-fx-background-color:#343546;
+}
+
+.parent{
+	-fx-background-color: #0099C9;
+}
+
+.buttonSlideBarre{
+	-fx-background-color: transparent ;
+}
+
+.btn{
+	-fx-background-color: transparent ;
+}
+
+.btn:hover{
+	-fx-background-color: #222233;
+	-fx-cursor: hand;
+}
+
+.avatar{
+	-fx-image:url(http://efxclipse.org/) 
+}
+
+.conteneurEquipe{
+	-fx-border-color: #a19191;
+	-fx-border-width: 1px 0px 0px 0px;
+}
+
+.card{
+	-fx-background-color: #ABD7E7;
+}
+
+.roundcard{
+	-fx-background-radius: 100%;
+	-fx-border-radius: 100%;
+	-fx-border-width: 5px;
+}
+
+.Button{
+	-fx-background-color: rgb(35,35,35);
+	-fx-color:green;
+	-fx-border-color: rgb(0,53,0);
+	-fx-width:100%;
+	-fx-font-family: sans-serif;
+}
+
+.Button:hover{
+	-fx-background-color: rgba(000,112,192,0.15);
+	-fx-border-color-width:3px;
+	-fx-border-color: #f1dc4f;
+	-fx-cursor: hand ;
+	-fx-font-family: verdana,calibri,sans-serif;
+}
+
+.backgroundImage{
+	-fx-background-image: url(images/fond1.jpg);
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat ;
+	-fx-background-size: 100%;
+}
+
+.backgroundImageAnime{
+	-fx-background-image: url(images/animation.gif) 
+}
+
+.btnSeConnecter{
+	-fx-border-color:green;
+	-fx-border-width:2px;
+	-fx-background-color:transparent ;
+	-fx-border-radius:10px;
+	-fx-background-radius:10px;
+	-fx-cursor:hand ;
+}
+
+.logoAssociation{
+	-fx-image: url(images/Myspace.png) 
+}
+
+.btnSeConnecter:hover{
+	-fx-background-color: green;
+	-fx-text-fill: white;
+}
+
+.btnChangerPass{
+	-fx-border-color:blue ;
+	-fx-border-width:2px;
+	-fx-background-color:transparent ;
+	-fx-border-radius:10px;
+	-fx-background-radius:10px;
+	-fx-cursor:hand ;
+}
+
+.btnChangerPass:hover{
+	-fx-background-color: blue ;
+	-fx-text-fill: white;
+}
+
+.imageSortie{
+	-fx-image: url(images/sortie.gif) 
+}
+
+.imageEntree{
+	-fx-image: url(images/entree.gif) 
+}
+
+.chart{
+	-fx-background-color: transparent;
+	-fx-horizontal-grid-lines-visible: false;
+	-fx-vertical-grid-lines-visible: false;
+}
+
+.chart-plot-background{
+	-fx-background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

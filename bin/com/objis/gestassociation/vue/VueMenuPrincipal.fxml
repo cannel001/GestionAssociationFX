@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.objis.gestassociation.vue.VueMenuPrincipalController">
+   <bottom>
+      <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: #1E3F56;">
+         <children>
+            <Button fx:id="btnDeconnexion" alignment="CENTER" contentDisplay="CENTER" layoutX="466.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clikerSurBtnDeconnecter" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: transparent; -fx-background-radius: 20%; -fx-border-color: #B51717; -fx-border-radius: 20%; -fx-border-width: 3px;" text="Deconnexion" textAlignment="CENTER" textFill="#f5f0f0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="21.0">
+               <font>
+                  <Font name="Ebrima Bold" size="9.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </bottom>
+</BorderPane>
