@@ -1,8 +1,19 @@
 package com.objis.gestassociation;
 
-import java.io.IOException;
 import java.util.Calendar;
 
+import com.objis.gestassociation.affichage.VueAttenteUser;
+import com.objis.gestassociation.affichage.VueCentre;
+import com.objis.gestassociation.affichage.VueChangerMdp;
+import com.objis.gestassociation.affichage.VueConnexion;
+import com.objis.gestassociation.affichage.VueMiniSlideBar;
+import com.objis.gestassociation.affichage.VueNotifAnnulation;
+import com.objis.gestassociation.affichage.VueNotifErreur;
+import com.objis.gestassociation.affichage.VueNotifModification;
+import com.objis.gestassociation.affichage.VueNotifSuppression;
+import com.objis.gestassociation.affichage.VueNotifValider;
+import com.objis.gestassociation.affichage.VuePrincipal;
+import com.objis.gestassociation.affichage.VueSlideBar;
 import com.objis.gestassociation.domaine.Adherent;
 import com.objis.gestassociation.domaine.Bureau;
 import com.objis.gestassociation.domaine.Cotisation;
@@ -21,38 +32,14 @@ import com.objis.gestassociation.service.impl.DiversService;
 import com.objis.gestassociation.service.impl.EvenementService;
 import com.objis.gestassociation.service.impl.MouvementService;
 import com.objis.gestassociation.service.impl.VieSocialeService;
-import com.objis.gestassociation.vue.VueAdherentControlleur;
-import com.objis.gestassociation.vue.VueBureauControlleur;
-import com.objis.gestassociation.vue.VueChangerDePassControlleur;
-import com.objis.gestassociation.vue.VueCommissaireControleur;
-import com.objis.gestassociation.vue.VueConnexionControlleur;
-import com.objis.gestassociation.vue.VueCotisationAnnuelleControlleur;
-import com.objis.gestassociation.vue.VueCotisationControlleur;
-import com.objis.gestassociation.vue.VueDiversControlleur;
-import com.objis.gestassociation.vue.VueEntreeSortieControlleur;
-import com.objis.gestassociation.vue.VueErreurNotifControlleur;
-import com.objis.gestassociation.vue.VueEvenementControlleur;
-import com.objis.gestassociation.vue.VueMenuPrincipalController;
-import com.objis.gestassociation.vue.VueMiniSlideBarControlleur;
-import com.objis.gestassociation.vue.VueRencontreControlleur;
-import com.objis.gestassociation.vue.VueSlideBarControlleur;
-import com.objis.gestassociation.vue.VueVieSocialeControlleur;
+
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class GestionAssociation extends Application {
 	
@@ -66,9 +53,9 @@ public class GestionAssociation extends Application {
 	
 	private String messageErreur;
 	
-	private AnchorPane pane=new AnchorPane();
+	private AnchorPane pane;
 	
-	private static BorderPane menuPrincipal=new BorderPane();
+	private BorderPane menuPrincipal;
 	
 	private AnchorPane vueSlider;
 	
@@ -79,15 +66,15 @@ public class GestionAssociation extends Application {
 	private Bureau bureau;
 	
 	//les services
-	private AdherentService adherentService=new AdherentService();
-	private BureauService bureauService=new BureauService();
-	private CotisationService cotisationService=new CotisationService();
-	private EvenementService evenementService=new EvenementService();
-	private CotisationAnnuelleService cotisationAnnuelleService=new CotisationAnnuelleService();
+//	private AdherentService adherentService=new AdherentService();
+//	private BureauService bureauService=new BureauService();
+//	private CotisationService cotisationService=new CotisationService();
+//	private EvenementService evenementService=new EvenementService();
+//	private CotisationAnnuelleService cotisationAnnuelleService=new CotisationAnnuelleService();
 	private AssociationService associationService=new AssociationService();
-	private VieSocialeService vieSocialeService=new VieSocialeService();
-	private DiversService diversService=new DiversService();
-	private MouvementService mouvementService=new MouvementService();
+//	private VieSocialeService vieSocialeService=new VieSocialeService();
+//	private DiversService diversService=new DiversService();
+//	private MouvementService mouvementService=new MouvementService();
 	
 	//les listes
 	private ObservableList<Adherent> listeAdherent=FXCollections.observableArrayList();
@@ -119,52 +106,57 @@ public class GestionAssociation extends Application {
 	//constructeur
 	public GestionAssociation() {
 		
+		pane=new AnchorPane();
+		
+		menuPrincipal=new BorderPane();
+		
+		
 		date=""+Calendar.getInstance().getWeekYear();
 		
-		//recuperation de tous les enregistrements de la base de données
-		listeAdherent.addAll(adherentService.readAll());
-		listeBureau.addAll(bureauService.readAll());
-		listeCotisation.addAll(cotisationService.readAll());
-		listeEvenement.addAll(evenementService.readAll());
-		listCotisationAnnuelle.addAll(cotisationAnnuelleService.getAllListCotisation(date));
-		listTtCotisationAnnuelleParMois.addAll(cotisationAnnuelleService.getTotalCotisationAnnuelleParAnnee(date));
-		listeVieSociale.addAll(vieSocialeService.readAll());
-		listeDivers.addAll(diversService.readAll());
-		listeMouvement.addAll(mouvementService.readAll());
-		listeAdherentHorsBureau.addAll(adherentService.readAllAdherentHorsBureau());
-		listAdherentDansBureau.addAll(adherentService.readAllADherentDansBureau());
-
-		
-		//ajout des informations à combo box
-		listeTypSoldeEvenenemt.add("OK");
-		listeTypSoldeEvenenemt.add("EN COURS");
-		listeTypSoldeEvenenemt.add("AVORTE");
-		listeTypSoldeEvenenemt.add("AVORTE");
-		listeTypSoldeEvenenemt.add("KO");
-		
-		//ajout des informations à combo fonction
-		listFonction.add("PRESIDENT");
-		listFonction.add("TRESORIER(E)");
-		listFonction.add("COMMISSAIRE AU COMPTE");
-		listFonction.add("SECRETAIRE");
-		
-		//ajout des informations au combo presence president
-		listePresencePresident.add("PRESENT");
-		listePresencePresident.add("ABSENT");
-		
-		//ajout des informations au combo type formulaire
-		listeTypAssuranc.add("ASSURANCE");
-		listeTypAssuranc.add("MALADIE");
-		listeTypAssuranc.add("DECES");
-		
-		//peuplement de la liste
-		listTypFormulaire.add("DEMANDE AIDE");
-		listTypFormulaire.add("PARTENARIAT");
-		listTypFormulaire.add("PARRAINAGE");
-		
-		//peuplement de la liste type mouvement
-		listeTypMouvement.add("ENTREE");
-		listeTypMouvement.add("SORTIE");
+//		//recuperation de tous les enregistrements de la base de données
+//		listeAdherent.addAll(adherentService.readAll());
+//		listeBureau.addAll(bureauService.readAll());
+//		listeCotisation.addAll(cotisationService.readAll());
+//		listeEvenement.addAll(evenementService.readAll());
+//		listCotisationAnnuelle.addAll(cotisationAnnuelleService.getAllListCotisation(date));
+//		listTtCotisationAnnuelleParMois.addAll(cotisationAnnuelleService.getTotalCotisationAnnuelleParAnnee(date));
+//		listeVieSociale.addAll(vieSocialeService.readAll());
+//		listeDivers.addAll(diversService.readAll());
+//		listeMouvement.addAll(mouvementService.readAll());
+//		listeAdherentHorsBureau.addAll(adherentService.readAllAdherentHorsBureau());
+//		listAdherentDansBureau.addAll(adherentService.readAllADherentDansBureau());
+//
+//		
+//		//ajout des informations à combo box
+//		listeTypSoldeEvenenemt.add("OK");
+//		listeTypSoldeEvenenemt.add("EN COURS");
+//		listeTypSoldeEvenenemt.add("AVORTE");
+//		listeTypSoldeEvenenemt.add("AVORTE");
+//		listeTypSoldeEvenenemt.add("KO");
+//		
+//		//ajout des informations à combo fonction
+//		listFonction.add("PRESIDENT");
+//		listFonction.add("TRESORIER(E)");
+//		listFonction.add("COMMISSAIRE AU COMPTE");
+//		listFonction.add("SECRETAIRE");
+//		
+//		//ajout des informations au combo presence president
+//		listePresencePresident.add("PRESENT");
+//		listePresencePresident.add("ABSENT");
+//		
+//		//ajout des informations au combo type formulaire
+//		listeTypAssuranc.add("ASSURANCE");
+//		listeTypAssuranc.add("MALADIE");
+//		listeTypAssuranc.add("DECES");
+//		
+//		//peuplement de la liste
+//		listTypFormulaire.add("DEMANDE AIDE");
+//		listTypFormulaire.add("PARTENARIAT");
+//		listTypFormulaire.add("PARRAINAGE");
+//		
+//		//peuplement de la liste type mouvement
+//		listeTypMouvement.add("ENTREE");
+//		listeTypMouvement.add("SORTIE");
 		
 	}
 	
@@ -185,568 +177,98 @@ public class GestionAssociation extends Application {
 	
 	public void afficherFenetreConnexion() {
 		
-		pane=new AnchorPane();
+		(new VueConnexion(this)).afficherVue();
 		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueConnexion.fxml"));
-		
-		try {
-			pane=loader.load();
-			
-			Scene scene=new Scene(pane);
-			
-			primaryStage.setScene(scene);
-			
-			primaryStage.setResizable(false);
-			primaryStage.setMaximized(false);
-			
-			VueConnexionControlleur controlleur=loader.getController();
-			
-			controlleur.setGestionAssociation(this);
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("echec");
-		}
 	}
 	
 	//methode permettant de changer de fenetre
 	public void changerFenetre(String url) {
 		
-		try {
-			
-			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(getClass().getResource(url));
-			
-			menuPrincipal=(BorderPane)loader.load();
-			
-			Scene scene=new Scene(menuPrincipal);
-			//ajouter la vue slider au menu principal
-			primaryStage.setScene(scene);
-			primaryStage.setMaximized(true);
-			
-			VueMenuPrincipalController controller=loader.getController();
-			
-			controller.setGestion(this);
-			
-			chargerVueSlide();
-			
-			chargerVueCentre("vue/VueAccueil.fxml");
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VuePrincipal(url,this)).afficherVue();
 		
 	}
 	
 	//methode permettant d'afficher la vue changer mot de passe
 	public void afficherVueChangerMdp() {
 		
-		AnchorPane root=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueChangerMotDePasse.fxml"));
-		
-		try {
-			
-			root=(AnchorPane)loader.load();
-			primaryStage.setScene(new Scene(root));
-			
-			VueChangerDePassControlleur controlleur=loader.getController();
-			controlleur.setGestion(this);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+		(new VueChangerMdp(this)).afficherVue();
 		
 	}
 	
 	//methode permettant de changer les vues au centre
 	public void chargerVueCentre(String url) {
 			
-			//charger les controller
-			if (url.equals("vue/VueAdherent.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);		
-					VueAdherentControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueAccueil.fxml")) {
-				try {
-					AnchorPane parent=new AnchorPane();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(AnchorPane)loader.load();
-					menuPrincipal.setCenter(parent);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueBureau.fxml")) {
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);
-					VueBureauControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} 
-			
-			else if(url.equals("vue/VueCotisation.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);		
-					VueCotisationControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueCotisationAnnuelle.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);		
-					VueCotisationAnnuelleControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}  else if(url.equals("vue/VueDivers.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);		
-					VueDiversControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueVieSociale.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);		
-					VueVieSocialeControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueRencontre.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);		
-					VueRencontreControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueEvenement.fxml")) {
-				
-				try {
-					VBox parent=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					parent=(VBox)loader.load();
-					menuPrincipal.setCenter(parent);
-					VueEvenementControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			} else if(url.equals("vue/VueEntreeSortie.fxml")) {
-				
-				try {
-					VBox root=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					root=(VBox)loader.load();
-					menuPrincipal.setCenter(root);
-					VueEntreeSortieControlleur controlleur=loader.getController();
-					controlleur.setGestionAssociation(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}else if(url.equals("vue/VueComissaireCompte.fxml")) {
-				
-				try {
-					VBox root=new VBox();
-					FXMLLoader loader=new FXMLLoader();
-					loader.setLocation(getClass().getResource(url));
-					root=(VBox)loader.load();
-					menuPrincipal.setCenter(root);
-					VueCommissaireControleur controleur=loader.getController();
-					controleur.setGestion(this);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
-			}
-			
+		(new VueCentre(url,this)).afficherVue();	
 			
 	}
 	
 	//methode pour charger la vue slider
 	public void chargerVueSlide() {
-		try {
-			vueSlider=new AnchorPane();
-			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(getClass().getResource("vue/VueSlideBar.fxml"));
-			vueSlider=(AnchorPane)loader.load();
-			menuPrincipal.setLeft(vueSlider);
-			VueSlideBarControlleur controlleur=loader.getController();
-			controlleur.setGestionAssociation(this);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		(new VueSlideBar(this)).afficherVue();
+		
 	}
+	
 	
 	//methode permettant d'afficher la petite slide Bar
 	public void afficherMiniSlideBar() {
 		
-		vueSlider=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueMiniSlideBar.fxml"));
-		
-		try {
-			
-			vueSlider=(AnchorPane)loader.load();
-			
-			menuPrincipal.setLeft(vueSlider);
-			
-			VueMiniSlideBarControlleur controlleur=loader.getController();
-			
-			controlleur.setGestion(this);
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VueMiniSlideBar(this)).afficherVue();
 		
 	}
-	
 	
 	
 	//methode permettant de faire patienter l'user
 	public void afficherVueAttenteUser() {
 		
-		AnchorPane root=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueAttenteTraitement.fxml"));
-		
-		try {
-			
-			root=(AnchorPane)loader.load();
-			
-			Scene scene=new Scene(root);
-			
-			stageAttenteUser=new Stage();
-			
-			scene.setFill(Color.TRANSPARENT);
-			
-			stageAttenteUser.setScene(scene);
-			stageAttenteUser.initStyle(StageStyle.TRANSPARENT);			
-			stageAttenteUser.initOwner(primaryStage);
-			stageAttenteUser.initModality(Modality.WINDOW_MODAL);
-			stageAttenteUser.centerOnScreen();
-			stageAttenteUser.show();
-			
-			//traitement permettant de fermer automatiquement le stage d'alert
-	
-			new Service<Void>() {
-
-				@Override
-				protected Task<Void> createTask() {
-					// TODO Auto-generated method stub
-					return new Task<Void>() {
-
-						@Override
-						protected Void call() throws Exception {
-							// TODO Auto-generated method stub
-							
-							while(getTraitementEnCours().equals(true)) {
-								
-								//attendre jusqu'a ce que la variable prenne false comme valeur
-								System.out.println("passage dans la boucle");
-								
-							}
-							
-							//tread permettant de gerer la vue
-							new Thread(()->{
-								Platform.runLater(()->{
-									stageAttenteUser.close();
-								});
-							}).start();
-							
-							return null;
-						}
-					};
-				}
-			}.start();
-	
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		(new VueAttenteUser(this)).afficherVue();
 		
 	}
 	
 	//methode permettant d'afficher la vue valider
 	public void afficherVueValider() {
 		
-		AnchorPane pane=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueValider.fxml"));
-		
-		try {
-			
-			if(stageAlerte.isShowing()) {
-				stageAlerte.close();
-			}
-			
-			stageAlerte=new Stage();
-			
-			pane=(AnchorPane)loader.load();
-			
-			Scene scene=new Scene(pane);
-			
-			scene.setFill(Color.TRANSPARENT);
-			
-			stageAlerte.setScene(scene);
-			
-			stageAlerte.initStyle(StageStyle.TRANSPARENT);
-			
-			stageAlerte.show();
-			
-			//lancement du thread d'arret
-			associationService.closeAlert(stageAlerte, 3);
-	
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VueNotifValider(stageAlerte, associationService)).afficherVue();
 		
 	}
-	
-	
 	
 	
 	//methode permettant d'afficher la vue modification
 	public void afficherNotifModification() {
 		
-		if(stageAlerte.isShowing()) {
-			stageAlerte.close();
-		}
-		
-		AnchorPane pane=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueModification.fxml"));
-		
-		try {
-			
-			stageAlerte=new Stage();
-			
-			pane=(AnchorPane) loader.load();
-			
-			Scene scene=new Scene(pane);
-			scene.setFill(Color.TRANSPARENT);
-			
-			stageAlerte.setScene(scene);
-			stageAlerte.initStyle(StageStyle.TRANSPARENT);
-			stageAlerte.show();
-			
-			//lancement du thread d'arret
-			associationService.closeAlert(stageAlerte, 3);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VueNotifModification(stageAlerte, associationService)).afficherVue();
 		
 	}
 	
 	//methode permettant d'afficher le message d'alert annulation
 	public void afficherAlerteAnnulation() {
 		
-		if(stageAlerte.isShowing()) {
-			stageAlerte.close();
-		}
-		
-		AnchorPane pane=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueAlerteAnnulation.fxml"));
-		
-		try {
-			
-			stageAlerte=new Stage();
-			
-			pane=(AnchorPane) loader.load();
-			
-			Scene scene=new Scene(pane);
-			scene.setFill(Color.TRANSPARENT);
-			
-			stageAlerte.setScene(scene);
-			stageAlerte.initStyle(StageStyle.TRANSPARENT);
-			stageAlerte.show();
-			
-			//lancement du thread d'arret
-			associationService.closeAlert(stageAlerte, 3);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VueNotifAnnulation(stageAlerte, associationService)).afficherVue();
 		
 	}
 	
 	//methode permettant d'afficher le message d'alert de suppression
 	public void afficherAlertSuppression() {
 		
-		if(stageAlerte.isShowing()) {
-			stageAlerte.close();
-		}
-		
-		AnchorPane pane=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueAlerteSuppression.fxml"));
-		
-		try {
-			
-			stageAlerte=new Stage();
-			
-			pane=(AnchorPane) loader.load();
-			
-			Scene scene=new Scene(pane);
-			scene.setFill(Color.TRANSPARENT);
-			
-			stageAlerte.setScene(scene);
-			stageAlerte.initStyle(StageStyle.TRANSPARENT);
-			stageAlerte.show();
-			
-			//lancement du thread d'arret
-			associationService.closeAlert(stageAlerte, 3);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VueNotifSuppression(stageAlerte, associationService)).afficherVue();
 		
 	}
 	
 	//methode permettant d'afficher la vue de l'alerte erreur
 	public void afficherAlerteErreur() {
 		
-		AnchorPane pane=new AnchorPane();
-		
-		FXMLLoader loader=new FXMLLoader();
-		
-		loader.setLocation(getClass().getResource("vue/VueErreurNotif.fxml"));
-		
-		try {
-			
-			if(stageAlerte.isShowing()) {
-				
-				stageAlerte.close();
-				
-			}
-			
-			pane=(AnchorPane)loader.load();
-			
-			Scene scene=new Scene(pane);
-			scene.setFill(Color.TRANSPARENT);
-			
-			stageAlerte=new Stage();
-			stageAlerte.setScene(scene);
-			stageAlerte.initStyle(StageStyle.TRANSPARENT);
-			stageAlerte.show();
-			
-			VueErreurNotifControlleur controlleur=loader.getController();
-			controlleur.setGestion(this);
-			
-			//lancement du thread d'arret
-			associationService.closeAlert(stageAlerte, 3);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		(new VueNotifErreur(stageAlerte, this, associationService)).afficherVue();
 		
 	}
 	
 	//methode permettant de retourner le stage
-	public Stage getStage() {
+	public Stage getPrimaryStage() {
 		return primaryStage;
+	}
+	
+	//setter de primary stage
+	public void setPrimaryStage(Stage stage) {
+		this.primaryStage=stage;
 	}
 	
 	//methode permettant de retourner la liste des adherents
@@ -909,8 +431,21 @@ public class GestionAssociation extends Application {
 	
 	//methode permettant de retourner la liste des mouvements
 	public ObservableList<Mouvement> getListMouvement(){
+		
 		return listeMouvement;
+		
 	}
+	
+	//setter du menu principal
+	public void setMenuPrincipal(BorderPane pane) {
+		this.menuPrincipal=pane;
+	}
+	
+	//getter du menu principal
+	public BorderPane getMenuPrincipal() {
+		return menuPrincipal;
+	}
+	
 	
 	
 

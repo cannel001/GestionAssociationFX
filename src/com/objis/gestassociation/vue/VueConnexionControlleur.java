@@ -41,8 +41,8 @@ public class VueConnexionControlleur {
 	public void setGestionAssociation(GestionAssociation association) {
 		
 		this.gestionAssociation=association;
-		association.getStage().setWidth(773);
-		association.getStage().setHeight(500);
+		association.getPrimaryStage().setWidth(773);
+		association.getPrimaryStage().setHeight(500);
 		
 	}
 	
@@ -56,9 +56,11 @@ public class VueConnexionControlleur {
 				if(service.mmbParLoginPassword(txfUsername.getText(), txfPassword.getText()) != null) {
 					
 					gestionAssociation.getInfoMembConnecte().add(service.mmbParLoginPassword(txfUsername.getText(), txfPassword.getText()));
-					gestionAssociation.changerFenetre("vue/VueMenuPrincipal.fxml");
-					gestionAssociation.getStage().setResizable(true);
-					gestionAssociation.getStage().setMaximized(true);
+					gestionAssociation.changerFenetre("../vue/VueMenuPrincipal.fxml");
+					gestionAssociation.chargerVueSlide();
+					gestionAssociation.chargerVueCentre("../vue/VueAccueil.fxml");
+					gestionAssociation.getPrimaryStage().setResizable(true);
+					gestionAssociation.getPrimaryStage().setMaximized(true);
 					
 				}else {
 					

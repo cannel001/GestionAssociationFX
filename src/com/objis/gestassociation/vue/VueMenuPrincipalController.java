@@ -51,8 +51,8 @@ public class VueMenuPrincipalController {
 		Optional<ButtonType> option= alert.showAndWait();
 		if(option.get().equals(ButtonType.OK)) {
 			association.afficherFenetreConnexion();
-			association.getStage().setWidth(773);
-			association.getStage().setHeight(500);
+			association.getPrimaryStage().setWidth(773);
+			association.getPrimaryStage().setHeight(500);
 		}else {
 			alert=new Alert(AlertType.INFORMATION);
 			alert.setTitle("Annulation");
