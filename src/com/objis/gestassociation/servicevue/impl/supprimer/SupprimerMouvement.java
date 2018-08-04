@@ -16,32 +16,31 @@ import javafx.scene.control.TextField;
 
 public class SupprimerMouvement extends MouvementServiceVue implements ISuppressionVue {
 
-	
-	public SupprimerMouvement(DatePicker date, TextField nature, TextField quantite, ComboBox<String> cbxMouvement,
-			GestionAssociation association, TableView<Mouvement> tableMouvement, Button btnValider, Button btnModifier,
-			Button btnSuprimer, Button btnReset, Label ttEntree, Label ttSortie) {
-		super(date, nature, quantite, cbxMouvement, association, tableMouvement, btnValider, btnModifier, btnSuprimer, btnReset,
-				ttEntree, ttSortie);
-		// TODO Auto-generated constructor stub
-	}
+    public SupprimerMouvement(DatePicker date, TextField nature, TextField quantite, ComboBox<String> cbxMouvement,
+            GestionAssociation association, TableView<Mouvement> tableMouvement, Button btnValider, Button btnModifier,
+            Button btnSuprimer, Button btnReset, Label ttEntree, Label ttSortie) {
+        super(date, nature, quantite, cbxMouvement, association, tableMouvement, btnValider, btnModifier, btnSuprimer, btnReset,
+                ttEntree, ttSortie);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void supprimer() {
-		
-		System.out.println(tableMouvement.getSelectionModel().getSelectedItem().getId());
+    @Override
+    public void supprimer() {
 
-		if(mouvementService.delete(tableMouvement.getSelectionModel().getSelectedItem().getId())) {
-			
-			association.afficherAlertSuppression();
-			association.getListMouvement().remove(tableMouvement.getSelectionModel().getSelectedIndex());
-			
-		}else {
-			
-			association.setMessageErreur("Erreur survenue pendant le traitement");
-			association.afficherAlerteErreur();
-			
-		}
-		
-	}
+        System.out.println(tableMouvement.getSelectionModel().getSelectedItem().getId());
+
+        if (mouvementService.delete(tableMouvement.getSelectionModel().getSelectedItem().getId())) {
+
+            association.afficherAlertSuppression();
+            association.getListeMouvement().remove(tableMouvement.getSelectionModel().getSelectedIndex());
+
+        } else {
+
+            association.setMessageErreur("Erreur survenue pendant le traitement");
+            association.afficherAlerteErreur();
+
+        }
+
+    }
 
 }

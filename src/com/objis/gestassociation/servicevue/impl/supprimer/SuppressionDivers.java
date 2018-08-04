@@ -17,45 +17,43 @@ import javafx.scene.control.Alert.AlertType;
 
 public class SuppressionDivers extends DiversServiceVue implements ISuppressionVue {
 
-	public SuppressionDivers(GestionAssociation association, DiversService diversService,
-			AssociationService associationService, Label lbTt, TableView<Divers> tableDivers, Divers divers,
-			Alert alert) {
-		super(association, diversService, associationService, lbTt, tableDivers, divers, alert);
-		// TODO Auto-generated constructor stub
-	}
+    public SuppressionDivers(GestionAssociation association, DiversService diversService,
+            AssociationService associationService, Label lbTt, TableView<Divers> tableDivers, Divers divers,
+            Alert alert) {
+        super(association, diversService, associationService, lbTt, tableDivers, divers, alert);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void supprimer() {
+    @Override
+    public void supprimer() {
 
-		alert=new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Attention");
-		alert.setContentText("Cette action entrainera la suppression de cet enregistrement");
-		Optional<ButtonType> option=alert.showAndWait();
-		if(option.get().equals(ButtonType.OK)) {
-			
-			if(diversService.delete(tableDivers.getSelectionModel().getSelectedItem().getId())) {
-				
-				association.afficherAlertSuppression();
-				
-				association.getListDivers().remove(tableDivers.getSelectionModel().getSelectedIndex());
-				
-				lbTt.setText(""+diversService.nbEnregistrement());
-				
-			}else {
-				
-				association.setMessageErreur("Erreur survenue pendant la suppression");
-				association.afficherAlerteErreur();
-				
-			}
-			
-		}else {
-			
-			association.afficherAlerteAnnulation();
-			
-		}
-		
-	}
-	
-	
+        alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Attention");
+        alert.setContentText("Cette action entrainera la suppression de cet enregistrement");
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get().equals(ButtonType.OK)) {
+
+            if (diversService.delete(tableDivers.getSelectionModel().getSelectedItem().getId())) {
+
+                association.afficherAlertSuppression();
+
+                association.getListeDivers().remove(tableDivers.getSelectionModel().getSelectedIndex());
+
+                lbTt.setText("" + diversService.nbEnregistrement());
+
+            } else {
+
+                association.setMessageErreur("Erreur survenue pendant la suppression");
+                association.afficherAlerteErreur();
+
+            }
+
+        } else {
+
+            association.afficherAlerteAnnulation();
+
+        }
+
+    }
 
 }

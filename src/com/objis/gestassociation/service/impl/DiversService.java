@@ -8,69 +8,69 @@ import com.objis.gestassociation.service.IDiversService;
 
 /**
  * Classe Divers Service
+ *
  * @author Seka Cannel Ulrich Evrard
  *
  */
 public class DiversService implements IDiversService {
-	
-	//les proprietes
-	private DiversDao dao=new DiversDao();
-	
-	
-	//constructeur par defaut
-	public DiversService() {
-		// TODO Auto-generated constructor stub
-	}
 
-	@Override
-	public Boolean create(Divers t) {
-		
-		if(!(t.getMotif().equals(""))) {
-			return dao.create(t);
-		}
-		
-		return null;
-	}
+    //les proprietes
+    private DiversDao dao = new DiversDao();
 
-	@Override
-	public Divers readOne(Long pk) {
+    //constructeur par defaut
+    public DiversService() {
+        // TODO Auto-generated constructor stub
+    }
 
-		if(!(pk.equals(null))) {
-			return dao.readOne(pk);
-		}
-		return null;
-	}
+    @Override
+    public Boolean create(Divers t) {
 
-	@Override
-	public Boolean update(Divers t) {
-		
-		if(!(t.getMotif().equals(null))) {
-			return dao.update(t);
-		}
-		
-		return null;
-	}
+        if (!(t.getMotif().equals(""))) {
+            return dao.create(t);
+        }
 
-	@Override
-	public Boolean delete(Long pk) {
-		
-		if(!(pk.equals(null))) {
-			return dao.delete(pk);
-		}
-		
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public List<Divers> readAll() {
-				
-		return dao.readAll();
-	}
+    @Override
+    public Divers readOne(Long pk) {
 
-	@Override
-	public int nbEnregistrement() {
-		// TODO Auto-generated method stub
-		return dao.readAll().size();
-	}
+        if (!(pk.equals(null))) {
+            return dao.readOne(pk);
+        }
+        return null;
+    }
+
+    @Override
+    public Boolean update(Divers t) {
+
+        if (!(t.getMotif().equals(null))) {
+            return dao.update(t);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Boolean delete(Long pk) {
+
+        if (!(pk.equals(null))) {
+            return dao.delete(pk);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Divers> readAll() {
+
+        return dao.readAll();
+    }
+
+    @Override
+    public int nbEnregistrement() {
+        // TODO Auto-generated method stub
+        return dao.readAll().size();
+    }
 
 }

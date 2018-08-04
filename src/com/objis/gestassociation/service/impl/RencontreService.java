@@ -7,61 +7,61 @@ import com.objis.gestassociation.domaine.Rencontre;
 import com.objis.gestassociation.service.IRencontreService;
 
 public class RencontreService implements IRencontreService {
-	
-	//ls proprietes
-	private RencontreDao dao;
 
-	//constructeur par defaut
-	public RencontreService() {
-		
-		dao=new RencontreDao();
-		
-	}
+    //ls proprietes
+    private RencontreDao dao;
 
-	@Override
-	public Boolean create(Rencontre t) {
-		
-		if(t.getIdRencontre()!=null) {
-			return dao.create(t);
-		}
-		
-		return false;
-	}
+    //constructeur par defaut
+    public RencontreService() {
 
-	@Override
-	public Rencontre readOne(Long pk) {
-		
-		if(pk>0) {
-			return dao.readOne(pk);
-		}
-		
-		return null;
-	}
+        dao = new RencontreDao();
 
-	@Override
-	public Boolean update(Rencontre t) {
-		
-		if(t.getIdRencontre()!=null) {
-			return dao.update(t);
-		}
-		
-		return false;
-	}
+    }
 
-	@Override
-	public Boolean delete(Long pk) {
-		
-		if(pk>0) {
-			return dao.delete(pk);
-		}
-		
-		return false;
-	}
+    @Override
+    public Boolean create(Rencontre t) {
 
-	@Override
-	public List<Rencontre> readAll() {
-		// TODO Auto-generated method stub
-		return dao.readAll();
-	}
+        if (t.getIdRencontre() != null) {
+            return dao.create(t);
+        }
+
+        return false;
+    }
+
+    @Override
+    public Rencontre readOne(Long pk) {
+
+        if (pk > 0) {
+            return dao.readOne(pk);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Boolean update(Rencontre t) {
+
+        if (t.getIdRencontre() != null) {
+            return dao.update(t);
+        }
+
+        return false;
+    }
+
+    @Override
+    public Boolean delete(Long pk) {
+
+        if (pk > 0) {
+            return dao.delete(pk);
+        }
+
+        return false;
+    }
+
+    @Override
+    public List<Rencontre> readAll() {
+        // TODO Auto-generated method stub
+        return dao.readAll();
+    }
 
 }

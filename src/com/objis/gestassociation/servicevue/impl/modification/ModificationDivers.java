@@ -16,36 +16,35 @@ import javafx.scene.control.TextField;
 
 public class ModificationDivers extends DiversServiceVue implements IModificationVue {
 
-	public ModificationDivers(GestionAssociation association, DiversService diversService,
-			AssociationService associationService, DatePicker date, TextField txfLieu, TextField txfMotif,
-			TextArea txfCorpsFormulaire, ComboBox<String> cbxTypFormulaire, Label lbTt, TableView<Divers> tableDivers,
-			Divers divers) {
-		super(association, diversService, associationService, date, txfLieu, txfMotif, txfCorpsFormulaire, cbxTypFormulaire,
-				lbTt, tableDivers, divers);
-		// TODO Auto-generated constructor stub
-	}
+    public ModificationDivers(GestionAssociation association, DiversService diversService,
+            AssociationService associationService, DatePicker date, TextField txfLieu, TextField txfMotif,
+            TextArea txfCorpsFormulaire, ComboBox<String> cbxTypFormulaire, Label lbTt, TableView<Divers> tableDivers,
+            Divers divers) {
+        super(association, diversService, associationService, date, txfLieu, txfMotif, txfCorpsFormulaire, cbxTypFormulaire,
+                lbTt, tableDivers, divers);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void modification() {
-		
-		divers=new Divers(date.getValue(),txfLieu.getText(),cbxTypFormulaire.getSelectionModel().getSelectedItem(),txfMotif.getText(),txfCorpsFormulaire.getText(),tableDivers.getSelectionModel().getSelectedItem().getId(),"ACTIF");
-		
-		if(diversService.update(divers)) {
-			
-			association.getListDivers().set(tableDivers.getSelectionModel().getSelectedIndex(), divers);
-			
-			association.afficherNotifModification();
-			
-			tableDivers.getSelectionModel().clearSelection();
-			
-		}else {
-			
-			association.setMessageErreur("Erreur survenue pendant la modification");
-			association.afficherAlerteErreur();
-			
-		}
-		
-		
-	}
+    @Override
+    public void modification() {
+
+        divers = new Divers(date.getValue(), txfLieu.getText(), cbxTypFormulaire.getSelectionModel().getSelectedItem(), txfMotif.getText(), txfCorpsFormulaire.getText(), tableDivers.getSelectionModel().getSelectedItem().getId(), "ACTIF");
+
+        if (diversService.update(divers)) {
+
+            association.getListeDivers().set(tableDivers.getSelectionModel().getSelectedIndex(), divers);
+
+            association.afficherNotifModification();
+
+            tableDivers.getSelectionModel().clearSelection();
+
+        } else {
+
+            association.setMessageErreur("Erreur survenue pendant la modification");
+            association.afficherAlerteErreur();
+
+        }
+
+    }
 
 }

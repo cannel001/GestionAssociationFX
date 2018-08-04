@@ -7,59 +7,59 @@ import com.objis.gestassociation.domaine.ParticipantsRencontre;
 import com.objis.gestassociation.service.IParticipantRencontreService;
 
 public class ParticipantRencontreService implements IParticipantRencontreService {
-	
-	//les proprietes
-	private ParticipantRencontreDao dao;
 
-	//constructeur par defaut
-	public ParticipantRencontreService() {
-		dao=new ParticipantRencontreDao();
-	}
+    //les proprietes
+    private ParticipantRencontreDao dao;
 
-	@Override
-	public Boolean create(ParticipantsRencontre t) {
-		
-		if(t.getIdParticipant()!=null) {
-			return dao.create(t);
-		}
-		
-		return null;
-	}
+    //constructeur par defaut
+    public ParticipantRencontreService() {
+        dao = new ParticipantRencontreDao();
+    }
 
-	@Override
-	public ParticipantsRencontre readOne(Long pk) {
-		
-		if(pk>0) {
-			return dao.readOne(pk);
-		}
-		
-		return null;
-	}
+    @Override
+    public Boolean create(ParticipantsRencontre t) {
 
-	@Override
-	public Boolean update(ParticipantsRencontre t) {
-		
-		if(t.getIdParticipant()!=null) {
-			return dao.update(t);
-		}
-		
-		return null;
-	}
+        if (t.getIdParticipant() != null) {
+            return dao.create(t);
+        }
 
-	@Override
-	public Boolean delete(Long pk) {
-		
-		if(pk!=null) {
-			return dao.delete(pk);
-		}
-		
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public List<ParticipantsRencontre> readAll() {
-		// TODO Auto-generated method stub
-		return dao.readAll();
-	}
+    @Override
+    public ParticipantsRencontre readOne(Long pk) {
+
+        if (pk > 0) {
+            return dao.readOne(pk);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Boolean update(ParticipantsRencontre t) {
+
+        if (t.getIdParticipant() != null) {
+            return dao.update(t);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Boolean delete(Long pk) {
+
+        if (pk != null) {
+            return dao.delete(pk);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<ParticipantsRencontre> readAll() {
+        // TODO Auto-generated method stub
+        return dao.readAll();
+    }
 
 }
