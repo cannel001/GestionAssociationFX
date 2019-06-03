@@ -1,11 +1,11 @@
 package com.objis.gestassociation.dao.impl;
 
-import com.objis.gestassociation.dao.impl.Singleton;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class Singleton {
 
@@ -25,7 +25,7 @@ public class Singleton {
             // TODO Auto-generated catch block
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur Fatale");
-            alert.setContentText("Impossible de se connecter à la base de données. Le programme va s'arreter");
+            alert.setContentText("Impossible de se connecter Ã  la base de donnÃ©es. Le programme va s'arreter");
             alert.showAndWait();
             System.exit(0);
         }

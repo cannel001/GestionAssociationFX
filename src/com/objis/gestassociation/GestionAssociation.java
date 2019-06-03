@@ -1,38 +1,8 @@
 package com.objis.gestassociation;
 
-import java.util.Calendar;
-
-import com.objis.gestassociation.affichage.VueAttenteUser;
-import com.objis.gestassociation.affichage.VueCentre;
-import com.objis.gestassociation.affichage.VueChangerMdp;
-import com.objis.gestassociation.affichage.VueConnexion;
-import com.objis.gestassociation.affichage.VueMiniSlideBar;
-import com.objis.gestassociation.affichage.VueNotifAnnulation;
-import com.objis.gestassociation.affichage.VueNotifErreur;
-import com.objis.gestassociation.affichage.VueNotifModification;
-import com.objis.gestassociation.affichage.VueNotifSuppression;
-import com.objis.gestassociation.affichage.VueNotifValider;
-import com.objis.gestassociation.affichage.VuePrincipal;
-import com.objis.gestassociation.affichage.VueSlideBar;
-import com.objis.gestassociation.domaine.Adherent;
-import com.objis.gestassociation.domaine.Bureau;
-import com.objis.gestassociation.domaine.Cotisation;
-import com.objis.gestassociation.domaine.CotisationAnnuelle;
-import com.objis.gestassociation.domaine.Divers;
-import com.objis.gestassociation.domaine.Evenement;
-import com.objis.gestassociation.domaine.Mouvement;
-import com.objis.gestassociation.domaine.Rencontre;
-import com.objis.gestassociation.domaine.VieSociale;
-import com.objis.gestassociation.service.impl.AdherentService;
-import com.objis.gestassociation.service.impl.AssociationService;
-import com.objis.gestassociation.service.impl.BureauService;
-import com.objis.gestassociation.service.impl.CotisationAnnuelleService;
-import com.objis.gestassociation.service.impl.CotisationService;
-import com.objis.gestassociation.service.impl.DiversService;
-import com.objis.gestassociation.service.impl.EvenementService;
-import com.objis.gestassociation.service.impl.MouvementService;
-import com.objis.gestassociation.service.impl.VieSocialeService;
-
+import com.objis.gestassociation.affichage.*;
+import com.objis.gestassociation.domaine.*;
+import com.objis.gestassociation.service.impl.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,9 +10,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.Calendar;
+
+@Setter
+@Getter
 @AllArgsConstructor
 public class GestionAssociation extends Application {
 
@@ -149,7 +123,7 @@ public class GestionAssociation extends Application {
         listePresencePresident = FXCollections.observableArrayList();
         listAdherentDansBureau = FXCollections.observableArrayList();
 
-        //recuperation de tous les enregistrements de la base de données
+        //recuperation de tous les enregistrements de la base de donnï¿½es
         listeAdherent.addAll(adherentService.readAll());
         listeBureau.addAll(bureauService.readAll());
         listeCotisation.addAll(cotisationService.readAll());
@@ -162,14 +136,14 @@ public class GestionAssociation extends Application {
         listeAdherentHorsBureau.addAll(adherentService.readAllAdherentHorsBureau());
         listAdherentDansBureau.addAll(adherentService.readAllADherentDansBureau());
 
-        //ajout des informations à combo box
+        //ajout des informations ï¿½ combo box
         listeTypSoldeEvenenemt.add("OK");
         listeTypSoldeEvenenemt.add("EN COURS");
         listeTypSoldeEvenenemt.add("AVORTE");
         listeTypSoldeEvenenemt.add("AVORTE");
         listeTypSoldeEvenenemt.add("KO");
 
-        //ajout des informations à combo fonction
+        //ajout des informations ï¿½ combo fonction
         listFonction.add("PRESIDENT");
         listFonction.add("TRESORIER(E)");
         listFonction.add("COMMISSAIRE AU COMPTE");

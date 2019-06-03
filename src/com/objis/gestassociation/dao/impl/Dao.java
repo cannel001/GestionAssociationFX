@@ -1,11 +1,11 @@
 package com.objis.gestassociation.dao.impl;
 
-import com.objis.gestassociation.dao.impl.Singleton;
+import com.objis.gestassociation.dao.IDao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.objis.gestassociation.daowebservice.IDaoWebService;
 
 /**
  * Classe Abstraite generique Dao
@@ -15,7 +15,7 @@ import com.objis.gestassociation.daowebservice.IDaoWebService;
  * @param <T>
  * @param <PK>
  */
-public abstract class Dao<T, PK> implements IDaoWebService<T, PK> {
+public abstract class Dao<T, PK> implements IDao<T, PK> {
 
     //les proprietes
     protected PreparedStatement ps;
@@ -29,7 +29,7 @@ public abstract class Dao<T, PK> implements IDaoWebService<T, PK> {
     }
 
     /**
-     * mehode de la requete precompilé
+     * mehode de la requete precompilï¿½
      *
      * @param req
      * @return
