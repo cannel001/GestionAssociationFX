@@ -4,6 +4,7 @@ Ce projet a pour objectif de gerer les associations. Il a été developé avec l
 
 - JavaFx
 - Hibernate
+- Mysql
 
 Les Differentes fonctionnalitées de l'application sont:
 
