@@ -1,12 +1,12 @@
 # Gestion Association - JavaFx
 
-* Ce projet a pour objectif de gerer les associations. Il a été developé avec les technologies suivantes:
+Ce projet a pour objectif de gerer les associations. Il a été developé avec les technologies suivantes:
 
-JavaFx
-Hibernate
+- JavaFx
+- Hibernate
 
-* Les Differentes fonctionnalitées de l'application sont:
+Les Differentes fonctionnalitées de l'application sont:
 
-Gestion des adherents
-Gestion des cotisations
-Gestion des divers
+- Gestion des adherents
+- Gestion des cotisations
+- Gestion des divers
